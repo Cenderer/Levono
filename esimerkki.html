@@ -1,0 +1,137 @@
+<!DOCTYPE html> 
+<html lang="fi"> 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Grid | Tim's Corner Kafé</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="bootstrap-grid.css">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand|Special+Elite" rel="stylesheet">
+  <link rel="icon" type="image/png" href="img/icon.png" sizes="16x16">  
+  <script src="smoke.js" defer></script>
+  <script src="scripts.js" defer></script>
+</head>
+
+<body>
+
+			
+	<div class="kielet">
+	<a id="finFlag" href="index.html"></a>
+	<a id="EnFlag" href="index_EN.html"></a>
+	</div>
+			
+
+  <header role="banner"> 
+    <div id="logo">
+      <a href="index.html"><img src="img\tims_kafe_lapinakyva_valk.png" alt="*Tim's kafé -logo*"></a>
+    </div>
+    <nav role="navigation"> 
+      <ul class="navList">
+        <li id="homePage" class="navBar">
+          <a class="navLink" href="index.html">Etusivu</a>
+        </li>
+        <li id="yhteysPage" class="navBar">
+          <a class="navLink" href="yhteystiedot.html">Yhteystiedot</a>
+        </li> 
+        <li id="menuPage" class="navBar">
+          <a class="navLink" href="menu.html">Menu</a>
+        </li>
+        <li class="navBar">
+          <a class="navLink active" href="esimerkki.html">Asettelua</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container sans-serif">
+    <div class="row">
+      <div class="col">
+        <h1>Bootstrap grid esimerkkejä</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p>.container div joka keskittää gridin sivun keskelle.</p>
+      </div>
+      <div class="col">
+        <p>.row divit joilla jaetaan sisältö omille riveilleen.</p>
+      </div>
+      <div class="col">
+        <p>.col divit joilla jaetaan rivi sarakkeisiin</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p>Bootstrap grid jakaa itsensä 12 osaan sisäisesti, tästä syystä 1-12 arvot luokkien nimissä, <a href="https://getbootstrap.com/docs/4.0/layout/grid/">lisätietoa bootstrapin sivuilta</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container example">
+    <div class="row">
+      <div class="col">
+        col
+      </div>
+      <div class="col">
+        col
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        col
+      </div>
+      <div class="col">
+        col
+      </div>
+      <div class="col">
+        col
+      </div>
+    </div>
+  </div>
+
+  <div class="container example">
+    <div class="row">
+      <div class="col-md-8">
+        col-md-8 (medium ikkuna 8/12, pieni ikkuna 12/12)
+      </div>
+      <div class="col-md-4">
+        col-md-4
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        col
+      </div>
+      <div class="col">
+        .col
+      </div>
+      <div class="col">
+        col
+      </div>
+    </div>
+  </div>
+
+  <div class="container example">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        col-md-6 offset-md-3 (offset vasemmalta 3/12 medium ikkuna)
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        col-md-3
+      </div>
+      <div class="col-md-3 offset-md-6">
+        col-md-3 offset-md-6 ( 6/12 offset vasemmalta medium ikkuna)
+      </div>
+    </div>
+  </div>
+
+  <footer role="contentinfo"> 
+    <p>&copy; 2017 Tim's Corner Kafé</p>
+  </footer> 
+
+  <canvas id="kahvi-hoyry"></canvas>
+</body>
+</html>

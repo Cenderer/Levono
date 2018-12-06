@@ -1,0 +1,522 @@
+/* ----
+----- CSS reset
+------- */
+
+
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body {
+	line-height: 1;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+/* ----
+----- Yleiset tyylit
+------- */
+
+
+
+/* Typografia */
+
+body {
+  font-family: 'Special Elite', cursive; /* fontiksi 'special elite' google fontti johon on linkattu HTML tiedostossa, varana kaikilta koneilta löytyvä 'cursive' jos sitä ei pystytä lataamaan. */
+  font-size: calc(1.2em + 0.3vw); /* muutetaan sivuston teksti ikkunan koon mukaan. Calcin avulla pystytään tekemään laskuja css:ssä, 1.2em on 1.2 kertaa käyttäjän selaimen oletusfonttikoko, 0.3vw on selaimen ikkunan leveys * 0,3; */
+  color: white;
+}
+
+h1, h2 { 
+  margin: 5px 0; 
+  font-weight: bold;
+}
+
+h1 { 
+  font-size: 2em; 
+}
+
+h2 { 
+  font-size: 1.5em; 
+}
+
+p { 
+  margin: 25px 0; 
+  font-size: 1em; 
+}
+
+a {
+  color: #c8bbb7;
+}
+
+/* Listat */
+
+ul { 
+	padding-left: 10px; 
+	margin: 10px 0; 
+	list-style-type: disc; 
+}
+
+li { 
+  margin-left: 10px;
+  padding-left: 10px; 
+}
+
+/* Muut */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  position: relative; /* #kahvi-hoyry elementin asettelua varten (position: absolute; elementti asettuu lähimmän positive tai absolute määritteisen elementin mukaan jonka sisällä se on, tässä tilanteessa tämä html elementti) */
+  min-height: 100%; /* jotta myöhemmin määritelty taustakuva (body::before) on varmasti selaimen ikkunan pohjassa, vaikka sivuston sisältöä ei olisi koko ruudun korkeudelta */
+}
+
+body {
+  width: 100%; /*pakotetaan leveydeksi 100% selaimen ikkunan koosta, liittyen alla olevaan overflow-x */
+  overflow-x: hidden; /* kaikki sisältö joka menee syystä tai toisesta sivusuunnassa selaimen ulkopuolelle piilotetaan (hyi sivuttainen scrollbar) */
+  overflow-y: scroll; /* pakotetaan kaikille sivuille scrollbar, jottei tausta siirry hieman sivusuunnassa kun siirrytään sivulle jossa sisältö pakottaa scrollbarin. */
+  padding-bottom: 350px; /* tila absoluuttisesti määritetylle footerille ja kahvikupille */
+  min-height: 100vh;
+}
+
+body.home {
+  display: flex; /* elemettien asettelu määritys, helpottaa elementtien asettelua sivulla. */
+  flex-direction: column; /* määritellään flex elementit asettumaan pystysuuntaan rivin sijaan. */
+}
+
+body::before { 
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: url("img/light_texture.png") repeat-y, url("img/noise_texture.png") repeat; /* lisätään taustakuvaksi noise_texture kuva ja sen päälle light_texture kuva, noise toistaa itseään kaikissa suunnissa, light vain pystysuunnassa */
+  background-size: 1280px 100px, 200px; /* merkitään taustakuvien koko, jotta ne pysyy oikeissa mittasuhteissa eikä vääristy */
+  background-color: #172026; /* taustan väri siinä tilanteessa, jossei kuvia pysty lataamaan syystä tai toisesta */
+  background-position: center; /* kaikkien aikaisempien itseään toistavien taustakuvien lähtöpaikan kohdaksi sivun keskikohta */
+}
+
+body::after { /* luodaan css:n kautta html elementti (sijoittuu ensimmäisenä body tagin sisälle), kannattaa käyttää jos elementti on tehty vain ulkonäön vuoksi eikä sisällä luettavaa sisältöä */
+  content: ''; /* jotta elementti luo itsensä, sille pitää määrittää content arvo. Koska halutaan luoda elementti vain uutta taustakuvaa varten, laitetaan arvoksi '', jolloin sisältö pysyy tyhjänä mutta elementti silti ilmestyy html dokumenttiin */
+  width: 100%; /* taustakuvan leveys */
+  max-width: 1200px;
+  height: 100%;
+  position: absolute;
+  transform: translateX(-50%);
+  bottom: 0; /* sijoitetaan elementti dokumentin pohjaan */
+  left: 50%; /* sijoitetaan se 50% vasemmasta sivusta, miinus puolet elementin leveydestä, jolloin se keskittyy sivulle. */
+  z-index: 1; /* z-index määrittää elementin aseman dokumentin "pinossa", esim. normaalisti html koodissa "<img id="A" /> <img id="B" />" B img näkyisi A imgin päällä jos ne olisi aseteltu samaan kohtaan. #A {z-index: 1; } avulla A img saataisiin näkymään B imgin päällä. */
+  background: url(img/coffee_bg.png) no-repeat;
+  background-position: center bottom;
+  background-size: 1200px;
+  pointer-events: none;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 70em;
+}
+
+.home .wrap {
+  display: flex;
+  align-self: center;
+  justify-content: flex-end;
+}
+
+article, aside, footer {
+  padding: 10px 1em;
+}
+
+/* Maailman hienoin painike */
+
+.button {
+  display: inline-block;
+  position: relative;
+  margin: 20px;
+  padding: 30px;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 10px rgba(213, 179, 172, 0.05);
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  color: #efe1e4;
+  font-size: 1em;
+}
+
+.button::before, .button::after {
+  content: '';
+  background: rgba(255,255,255,0.05);
+  height: 10px;
+  width: 100%;
+  position: absolute;
+  transition: all 0.3s ease-out;
+}
+
+.button::before {
+  top: 0;
+  right: -100%;
+  background: linear-gradient(90deg, rgba(0,0,0,0), rgba(255,255,255,0.10));
+}
+
+.button::after {
+  bottom: 0;
+  left: -100%;
+  background: linear-gradient(-90deg, rgba(0,0,0,0), rgba(255,255,255,0.10));
+}
+
+.button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(45deg, rgba(83, 60, 57, 0.2), rgba(34, 40, 45, 0.2));
+}
+
+.button:hover::before {
+  transform: translateX(-100%);
+}
+
+.button:hover::after {
+  transform: translateX(100%);
+}
+
+.button:active {
+  background: rgba(0, 0, 0, 0);
+}
+
+/* bootstrap grid esimerkit lounas sivulla */
+.container.example, .container.example * {
+  background-color: rgba(255,255,255,0.2);
+  font-family: sans-serif !important;
+}
+
+.container.example {
+ margin-top: 6rem;
+    margin-bottom: 2rem;
+    padding: 15px 30px;
+}
+
+.container.example .row+.row {
+    margin-top: 1rem;
+}
+
+.container.example [class^=col] {
+    border: 1px solid white;
+        padding: 15px;
+}
+
+.sans-serif {
+  font-family: sans-serif;
+}
+
+
+
+/* ----
+----- Header alueen tyylit
+------- */
+
+
+
+header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+#logo img {
+  display: block;
+  max-width: 15em;
+  width: 100%;
+}
+
+nav li {
+  display: block;
+  padding: 10px;
+}
+
+@media only screen and (min-width: 710px) {
+  nav li {
+    display: inline-block;
+  }
+}
+
+nav a {
+  color: #d4d4d4;
+  font-family: 'Quicksand', sans-serif;
+  text-decoration: none;
+  transition: box-shadow 0.2s ease-out, color 0.1s ease;
+}
+
+nav a.active {
+  color: #efcfc6;
+  box-shadow: 0 3px 0 #33353c;
+}
+
+nav a:hover {
+  color: white;
+  box-shadow: 0 2px 0 #ccbab8, inset 0 -1px 0 #ccbab8;
+}
+
+.kielet {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  padding-top: 5px;
+  margin-right: 10px;
+}
+
+.kielet a{
+	margin: 7px 3px;
+	width: 25px;
+	height: 15px;
+}
+
+#finFlag{
+	background: url(img/fin_lippu.png);
+	background-size: cover;
+}
+#EnFlag{
+	background: url(img/eng_lippu.png);
+	background-size: cover;
+}
+
+#finFlag:hover{
+	background: url(img/fin_lippu_klik.png);
+	background-size: cover;
+}
+#EnFlag:hover{
+	background: url(img/eng_lippu_klik.png);
+	background-size: cover;
+}
+#finFlag:active{
+	background: url(img/fin_lippu_klik.png);
+	background-size: cover;
+}
+#EnFlag:active{
+	background: url(img/eng_lippu_klik.png);
+	background-size: cover;
+}
+
+
+/* ----
+----- Sisältö alueen tyylit
+------- */
+
+
+
+/*article, aside{
+  width: 50%; ei taideta tarvita tätä sääntöä oikeastaan
+}*/
+
+.home article {
+  width: 100%;
+  max-width: 30em;
+  padding: 2em 3em 0;
+  align-self: flex-end;
+}
+
+.home article p {
+  line-height: 1.5;
+}
+
+.Koot { 
+  padding: 0% 0% 0% 3%; 
+  list-style-type: none;
+  margin-top:8px;
+}
+
+.Hinnat span {
+  float:right;
+}
+
+
+
+.Kahvi { 
+  padding: 0% 0% 1%;
+}
+@media only screen and (max-width: 1199px) {
+  .Hinnat span{
+    display: block;
+	float: none;
+  }
+}
+
+
+/*----- Yhteystiedot sivun tyylit -----*/
+
+.yhteysDiv{
+	margin-top: 50px;
+	display:flex;
+	width: 100%;
+	justify-content: flex-end;
+	flex-direction: column;
+	padding-right: 6.5%;
+	padding-left: 2%;
+}
+
+@media only screen and (min-width: 710px) {
+  .yhteysDiv{
+    flex-direction: row;
+  }
+}
+
+#yhtTiedUl{
+	list-style: none;
+}
+
+.yhtTiedLi,.henkListLi{
+	padding: 0.2em 0;
+}
+
+
+/* ----
+----- Footer alueen tyylit
+------- */
+
+
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin: 0;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 2;
+}
+
+footer p {
+  margin: 0;
+  font-size: 20px;
+  color: #e4d2d2;
+}
+
+#kahvi-hoyry {
+  display: none;
+}
+
+@media only screen and (min-width: 60em) {
+  #kahvi-hoyry {
+  display: block;
+  position: absolute;
+  width: 100%;
+  max-width: 500px;
+  bottom: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  }
+}
+
+body {
+	animation-duration: 6s;
+	animation-name: flicker;
+	animation-delay: 2s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+/*#sc-widget {
+  position: absolute;
+  max-width: 600px;
+  bottom: 75px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+  mix-blend-mode: hard-light;
+  filter: sepia(1) hue-rotate(320deg) saturate(0.6);
+}*/
+
+.player {
+  position: absolute;
+  height: 100px;
+  width: 100%;
+  max-width: 600px;
+  bottom: 150px;
+  left: calc(50%);
+  transform: translateX(-50%);
+  mix-blend-mode: lighten;
+  filter: invert(1) hue-rotate(165deg) saturate(0.2);
+  overflow: hidden;
+  opacity: 0.75;
+}
+
+#sc-widget {
+  width: calc(100% + 110px);
+  height: 100%;
+  position: relative;
+  left: -110px;
+}
+/* ----
+----- Animaatio
+---- */
+
+/*
+kohde{
+	animation-duration: 6s;
+	animation-name: flicker;
+	animation-delay: 2s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+*/
+
+@keyframes flicker{
+  0% {box-shadow: inset 0px 0px 0px 0px rgba(220,220,255,0.20);}
+  23%{box-shadow: inset 0px 0px 0.6em 0.2em rgba(220,220,255,0.20);}
+  43%{box-shadow: inset 0px 0px 0px 0px rgba(220,220,255,0.20);}
+  73%{box-shadow: inset 0px 0px 0.9em 0.4em rgba(220,220,255,0.20);}
+  100%{box-shadow: inset 0px 0px 0px 0px rgba(220,220,255,0.20);}
+}
+

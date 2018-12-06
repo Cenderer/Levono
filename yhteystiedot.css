@@ -1,0 +1,23 @@
+article{
+float: left;
+}
+
+aside{
+	float: left;
+}
+
+footer{
+	float: left;
+	width: 100%;
+	text-align: center;
+}
+
+#yhteystiedotLista{
+	list-style-type: none;
+}
+.henkList{
+	padding: 6px 0px 6px 1px;
+}
+#yhteysPage{
+	background-color: rgba(0,0,0,0.15);
+}
